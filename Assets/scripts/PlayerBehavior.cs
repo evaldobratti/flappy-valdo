@@ -30,12 +30,15 @@ public class PlayerBehavior : MonoBehaviour {
 			rigidbody2D.AddForce(new Vector2(0, 1) * flyForce);
 		} else if (Input.GetMouseButtonDown(0)) {
 			gameController.StartGame();
-			rigidbody2D.gravityScale = originalGravity;
+
 		}
 
-		if (gameController.CurrentGameState != GameState.IN_GAME) {
+		if (gameController.CurrentGameState != GameState.IN_GAME &&
+		    gameController.CurrentGameState != GameState.GAME_OVER) {
 			rigidbody2D.gravityScale = 0;
 			return;
+		} else {
+			rigidbody2D.gravityScale = originalGravity;
 		}
 		if (inAnim) 
 		{
@@ -59,5 +62,12 @@ public class PlayerBehavior : MonoBehaviour {
 			if (mesh.eulerAngles.z > 30)
 				mesh.eulerAngles = new Vector3(0,0,30);
 		}
+
+
+	}
+
+	public void OnCollisionEnter2D(Collision2D collision) {
+		gameController.StopGame ();
+		mesh.eulerAngles = Vector3.zero;
 	}
 }

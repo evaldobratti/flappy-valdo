@@ -15,6 +15,7 @@ public class PipeController : MonoBehaviour {
 	private GameController gameController;
 
 	public List<GameObject> pipes;
+	public Transform player;
 
 	// Use this for initialization
 	void Start () {

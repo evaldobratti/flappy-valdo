@@ -51,6 +51,7 @@
      <Compile Include="Assets\scripts\PipeController.cs" />
      <Compile Include="Assets\scripts\PlayerBehavior.cs" />
      <Compile Include="Assets\scripts\ScenarioMoviment.cs" />
+     <Compile Include="Assets\scripts\Score.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
