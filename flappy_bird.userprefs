@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\ScenarioMoviment.cs">
+    <Files>
+      <File FileName="Assets\scripts\PipeBehavior.cs" Line="17" Column="4" />
+      <File FileName="Assets\scripts\PlayerBehavior.cs" Line="18" Column="3" />
+      <File FileName="Assets\scripts\PipeController.cs" Line="26" Column="3" />
+      <File FileName="Assets\scripts\ScenarioMoviment.cs" Line="21" Column="11" />
+      <File FileName="Assets\scripts\GameController.cs" Line="38" Column="43" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
