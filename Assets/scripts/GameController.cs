@@ -16,15 +16,17 @@ public class GameController : MonoBehaviour
 
 	public Transform player;
 	private Vector3 startPositionPlayer;
-	private GameState currentState;
+	public GameState currentState;
 	public Transform scoreTransform;
-	private Score score;
-	// Use this for initialization
+	public Score Score { get; set;}
+
+	public ScoreGameOverController gameOverState;
+
 	void Start ()
 	{
 		startPositionPlayer = player.position;
 		currentState = GameState.START;
-		score = scoreTransform.GetComponent<Score> ();
+		Score = scoreTransform.GetComponent<Score> ();
 	}
 	
 	// Update is called once per frame
@@ -34,29 +36,30 @@ public class GameController : MonoBehaviour
 		case GameState.START:
 			{
 				currentState = GameState.IDLE;
-				score.Disable();
+				Score.Disable();
 			}
 			break;
 		case GameState.IDLE:
 			{
+				if (Input.GetMouseButtonDown(0))
+			    	currentState = GameState.IN_GAME;
 				player.position = startPositionPlayer;
-				score.Valor = 0;
+				Score.Valor = 0;
 			}
 			break;
 		case GameState.IN_GAME:
 			{
-				score.Enable();
+				Score.Enable();
 			}
 			break;
 		case GameState.GAME_OVER:
 			{
-				FindObjectsOfType<PipeBehavior> ().ToList ().ForEach (i => i.gameObject.SetActive (false));
-				currentState = GameState.RANKING;
+				gameOverState.Update(this);
 			}
 			break;
 		case GameState.RANKING: 
 			{
-				score.Disable();
+				Score.Disable();
 				currentState = GameState.START;
 			}
 			break;
@@ -67,19 +70,15 @@ public class GameController : MonoBehaviour
 		currentState = GameState.IN_GAME;
 	}
 
-	public GameState CurrentGameState {
-		get {
-			return currentState;
-		}
-	}
 
 	public void StopGame ()
 	{
 		currentState = GameState.GAME_OVER;
+		gameOverState.stateEntered(this);
 
 	}
 
 	public void addScore() {
-		score.Scored ();
+		Score.Scored ();
 	}
 }

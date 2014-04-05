@@ -15,7 +15,7 @@ public class PipeBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameController.CurrentGameState != GameState.IN_GAME)
+		if (gameController.currentState != GameState.IN_GAME)
 			return;
 
 		transform.position += new Vector3 (speed, 0, 0) * Time.deltaTime;
@@ -31,7 +31,6 @@ public class PipeBehavior : MonoBehaviour {
 	}
 
 	void OnEnable() {
-		Debug.Log ("zerou");
 		hasScored = false;
 	}
 

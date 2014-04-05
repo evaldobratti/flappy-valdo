@@ -29,7 +29,7 @@ public class PipeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameController.CurrentGameState != GameState.IN_GAME)
+		if (gameController.currentState != GameState.IN_GAME)
 			return;
 
 		currentRateSpawn += Time.deltaTime;

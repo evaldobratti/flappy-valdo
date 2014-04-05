@@ -23,18 +23,16 @@ public class PlayerBehavior : MonoBehaviour {
 	void Update () {
 	
 
-		if (Input.GetMouseButtonDown(0) && gameController.CurrentGameState == GameState.IN_GAME ) 
+		if (Input.GetMouseButtonDown(0) && gameController.currentState == GameState.IN_GAME ) 
 		{
 			inAnim = true;
 			rigidbody2D.velocity = Vector2.zero;
 			rigidbody2D.AddForce(new Vector2(0, 1) * flyForce);
-		} else if (Input.GetMouseButtonDown(0)) {
-			gameController.StartGame();
+		} 
 
-		}
 
-		if (gameController.CurrentGameState != GameState.IN_GAME &&
-		    gameController.CurrentGameState != GameState.GAME_OVER) {
+		if (gameController.currentState != GameState.IN_GAME &&
+		    gameController.currentState != GameState.GAME_OVER) {
 			rigidbody2D.gravityScale = 0;
 			return;
 		} else {
@@ -67,7 +65,8 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 
 	public void OnCollisionEnter2D(Collision2D collision) {
-		gameController.StopGame ();
-		mesh.eulerAngles = Vector3.zero;
+		if (gameController.currentState == GameState.IN_GAME)
+			gameController.StopGame ();
+
 	}
 }

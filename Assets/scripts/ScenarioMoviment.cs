@@ -17,7 +17,7 @@ public class ScenarioMoviment : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameController.CurrentGameState != GameState.IN_GAME)
+		if (gameController.currentState != GameState.IN_GAME)
 			return;
 
 		offset += 0.001f;

@@ -13,6 +13,9 @@ public class Score : MonoBehaviour {
 		}
 		set {
 			_valor = value;
+			Debug.Log("registrou para " + value);
+			score.text = Valor.ToString ();
+			scoreShadow.text = Valor.ToString ();
 		}
 	}
 
